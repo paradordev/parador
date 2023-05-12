@@ -1,0 +1,42 @@
+.section-special-offers {
+  .mySwiper {
+    .swiper-pagination {
+      position: absolute;
+      left: 0;
+      top: 26vh;
+
+      // bottom: 20vh;
+      z-index: 20;
+      width: 100%;
+      margin-bottom: 24px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+
+      @media screen and (min-width: 480px) {
+        top: 45vh;
+      }
+
+      @media screen and (min-width: 768px) {
+        top: 70vh;
+      }
+
+      .swiper-pagination-bullet {
+        width: 12px;
+        height: 12px;
+        display: inline-block;
+        border-radius: 50%;
+        background: transparent;
+        border: 2px solid var(--chakra-colors-whiteAlpha-700);
+        cursor: pointer;
+        box-shadow: 1px -1px 6px 4px rgba(148, 148, 148, 0.1);
+        -webkit-box-shadow: 1px -1px 6px 4px rgba(148, 148, 148, 0.1);
+        -moz-box-shadow: 1px -1px 6px 4px rgba(148, 148, 148, 0.1);
+      }
+      .swiper-pagination-bullet-active {
+        background: var(--chakra-colors-white);
+        border: 2px solid var(--chakra-colors-white);
+      }
+    }
+  }
+}

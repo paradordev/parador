@@ -1,0 +1,13 @@
+.book-now-container {
+  select {
+    font-size: var(--chakra-fontSizes-xs);
+    padding: 0;
+    padding-left: 12px;
+    option {
+      border-radius: 0;
+      border: 0;
+      background-color: var(--chakra-colors-blackAlpha-900);
+      font-size: var(--chakra-fontSizes-xs);
+    }
+  }
+}
