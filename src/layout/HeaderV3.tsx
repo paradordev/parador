@@ -1824,7 +1824,7 @@ const diningMobileList = [
   { id: 12, name: "CANTING RESTAURANT" },
   { id: 18, name: "HANGRY RESTAURANT" },
   { id: 2, name: "LEGEN LOUNGE & BAR" },
-  { id: 1, name: "Mezzanine Restaurant" },
+  { id: 20, name: "Legen Restaurant" },
   { id: 10, name: "PAMILUTO RESTAURANT" },
   { id: 16, name: "POPCORN RESTAURANT" },
   { id: 17, name: "POPCORN RESTAURANT" },
@@ -1837,7 +1837,7 @@ const diningMobileListV2 = [
     slug: "atria-hotel-gading-serpong",
     dining: [
       { id: 8, name: "BATEEQ LOUNGE" },
-      { id: 1, name: "Mezzanine Restaurant" },
+      { id: 20, name: "Legen Restaurant" },
     ],
   },
   {

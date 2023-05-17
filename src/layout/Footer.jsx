@@ -303,7 +303,7 @@ const listOurGrup = {
     <NextLink href="/" passHref key={0}>
       <Link _focus={{}}>Homepage</Link>
     </NextLink>,
-    <NextLink key={1} href={`/about`} passHref>
+    <NextLink key={1} href={`/`} passHref>
       <Link _focus={{}}>About Us</Link>
     </NextLink>,
     <NextLink key={2} href={`/`} passHref>
@@ -414,7 +414,7 @@ const listSitemap = {
     <NextLink key={2} passHref href={`/privacy-policy`}>
       <Link _focus={{}}>Privacy & Policy</Link>
     </NextLink>,
-    <NextLink key={3} passHref href={`https://career.parador-hotels.com/`}>
+    <NextLink key={3} passHref href={`career/`}>
       <Link _focus={{}}>Career</Link>
     </NextLink>,
   ],
@@ -428,7 +428,7 @@ const listSitemap = {
     <NextLink key={2} passHref href={`/privacy-policy`}>
       <Link _focus={{}}>Privasi & Kebijakan</Link>
     </NextLink>,
-    <NextLink key={3} passHref href={`https://career.parador-hotels.com/`}>
+    <NextLink key={3} passHref href={`career/`}>
       <Link _focus={{}}>Karir</Link>
     </NextLink>,
   ],
