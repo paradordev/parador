@@ -12,7 +12,8 @@ const nextConfig = {
       "dev.parador-hotels.com",
       "parador-hotels.com",
       "backend.parador-hotels.com",
-      "parador-test.vercel.app"
+      "parador-test.vercel.app",
+      "parador.vercel.app",
     ],
   },
   experimental: {
