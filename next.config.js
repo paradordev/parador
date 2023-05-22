@@ -12,8 +12,6 @@ const nextConfig = {
       "dev.parador-hotels.com",
       "parador-hotels.com",
       "backend.parador-hotels.com",
-      "parador-test.vercel.app",
-      "parador.vercel.app",
     ],
   },
   experimental: {
@@ -21,6 +19,12 @@ const nextConfig = {
   },
   async rewrites() {
     return {
+      fallback:[
+        {
+          source: '/api/:path*',
+          destination: '/api/:path*',
+        },
+      ],
       beforeFiles: [
         {
           source: "/shop/cart/checkout",
