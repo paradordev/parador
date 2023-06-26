@@ -555,7 +555,7 @@ function OfferCardGrid({
             borderColor={color}
             onClick={() => {
               isGroupOffer
-                ? setIsGroupPop(true)
+                ? (connect_to_synxis == "false" && promo_url != "") ? router.push(promo_url) : setIsGroupPop(true)
                 : router.push(`/special-offers/${id}`);
             }}
           >
@@ -782,7 +782,7 @@ function OfferCardList({
                 borderColor={color}
                 onClick={() => {
                   isGroupOffer
-                    ? setIsGroupPop(true)
+                    ? (connect_to_synxis == "false" && promo_url != "") ? router.push(promo_url) : setIsGroupPop(true)
                     : router.push(`/special-offers/${id}`);
                 }}
               >
