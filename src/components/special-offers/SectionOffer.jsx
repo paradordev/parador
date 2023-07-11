@@ -218,6 +218,7 @@ export default function SectionOffer({
                       dest,
                       arrive,
                       depart,
+                      category,
                     },
                     i
                   ) => (
@@ -241,6 +242,7 @@ export default function SectionOffer({
                       dest={dest}
                       arrive={arrive}
                       depart={depart}
+                      category={category}
                     />
                   )
                 )
@@ -275,6 +277,7 @@ export default function SectionOffer({
                       dest,
                       arrive,
                       depart,
+                      category,
                     },
                     i
                   ) => (
@@ -298,6 +301,7 @@ export default function SectionOffer({
                       dest={dest}
                       arrive={arrive}
                       depart={depart}
+                      category={category}
                     />
                   )
                 )}
@@ -355,6 +359,7 @@ function OfferCardGrid({
   dest,
   arrive,
   depart,
+  category,
 }) {
   const router = useRouter();
   const [isGroupPop, setIsGroupPop] = useState(false);
@@ -554,9 +559,10 @@ function OfferCardGrid({
             _hover={{ bg: color, color: "white" }}
             borderColor={color}
             onClick={() => {
-              isGroupOffer
-                ? (connect_to_synxis == "false" && promo_url != "") ? router.push(promo_url) : setIsGroupPop(true)
-                : router.push(`/special-offers/${id}`);
+              isGroupOffer ? 
+                category == "others" ? 
+                  router.push(promo_url) : setIsGroupPop(true)
+              : router.push(`/special-offers/${id}`);
             }}
           >
             {router.locale == "id" ? "Lebih Lengkap" : "See More"}
@@ -596,6 +602,7 @@ function OfferCardList({
   dest,
   arrive,
   depart,
+  category,
 }) {
   const router = useRouter();
   const [isGroupPop, setIsGroupPop] = useState(false);
@@ -781,9 +788,10 @@ function OfferCardList({
                 _hover={{ bg: color, color: "white" }}
                 borderColor={color}
                 onClick={() => {
-                  isGroupOffer
-                    ? (connect_to_synxis == "false" && promo_url != "") ? router.push(promo_url) : setIsGroupPop(true)
-                    : router.push(`/special-offers/${id}`);
+                  isGroupOffer ? 
+                    category == "others" ? 
+                      router.push(promo_url) : setIsGroupPop(true)
+                  : router.push(`/special-offers/${id}`);
                 }}
               >
                 {router.locale == "id" ? "Lebih Lengkap" : "See More"}
