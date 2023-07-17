@@ -559,10 +559,11 @@ function OfferCardGrid({
             _hover={{ bg: color, color: "white" }}
             borderColor={color}
             onClick={() => {
-              isGroupOffer ? 
-                category == "others" ? 
-                  router.push(promo_url) : setIsGroupPop(true)
-              : router.push(`/special-offers/${id}`);
+              category == "others" 
+                  ? router.push(promo_url) 
+                  : isGroupOffer
+                    ? setIsGroupPop(true)
+                    : router.push(`/special-offers/${id}`);
             }}
           >
             {router.locale == "id" ? "Lebih Lengkap" : "See More"}
@@ -788,10 +789,11 @@ function OfferCardList({
                 _hover={{ bg: color, color: "white" }}
                 borderColor={color}
                 onClick={() => {
-                  isGroupOffer ? 
-                    category == "others" ? 
-                      router.push(promo_url) : setIsGroupPop(true)
-                  : router.push(`/special-offers/${id}`);
+                  category == "others" 
+                  ? router.push(promo_url) 
+                  : isGroupOffer
+                    ? setIsGroupPop(true)
+                    : router.push(`/special-offers/${id}`);
                 }}
               >
                 {router.locale == "id" ? "Lebih Lengkap" : "See More"}
