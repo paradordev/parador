@@ -49,7 +49,7 @@ import LinkTo from "../components/LinkTo";
 import { convertImgHttps } from "../utils/functions";
 import { useNextDining, usePopUpBackground } from "../utils/hooks";
 
-import { safeMarginX, useLargeQuery } from "../utils/mediaQuery";
+import { safeMarginX } from "../utils/mediaQuery";
 import { IHeader } from "../utils/types";
 
 export const NavContext = createContext<any>(null);
@@ -88,7 +88,11 @@ export default function HeaderV3({
     has_wedding,
   } = headerItem;
 
-  const { isLarge, is2XLarge } = useLargeQuery();
+  // const { isLarge, is2XLarge } = useLargeQuery();
+  const [is2XLarge] = useMediaQuery("(min-width:  1160px)", {
+    ssr: true,
+    fallback: false,
+  });
 
   const container = useRef(null);
   const headerContainer = useRef<any>(null);

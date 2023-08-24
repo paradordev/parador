@@ -63,6 +63,7 @@ export default function SectionSpecialOffer({
           is_private: "false",
           hotel_name: hotel,
           is_group_offer: false,
+          is_selected: "true"
         }).then((res) => {
           setData(res.data);
         });
