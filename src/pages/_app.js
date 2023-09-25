@@ -58,6 +58,7 @@ function MyApp({ Component, pageProps }) {
         })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_PROD}');
         `}
       </Script>
+      <Script id="rocketbots__widget" src="https://cdn.chatapi.net/webchat/widget/widget.js?cId=2fe8ab11e41d8c1dd3ab007f56a7024478dd839b783ef08182a63abd6d141c01"></Script>
 
       <NextNProgress
         color="rgba(150,150,150,0.4)"
