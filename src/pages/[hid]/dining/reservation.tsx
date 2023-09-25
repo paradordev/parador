@@ -162,8 +162,6 @@ export default function Reservation({
     }
   }, [prices]);
 
-  console.log(prices, products);
-
   useEffect(() => {
     if (diningList && diningList.length > 0) {
       let temp = 0;
