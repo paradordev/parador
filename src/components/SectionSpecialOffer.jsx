@@ -159,6 +159,7 @@ export default function SectionSpecialOffer({
                 (
                   {
                     thumb,
+                    thumb_banner,
                     slug,
                     title,
                     title_id,
@@ -190,7 +191,7 @@ export default function SectionSpecialOffer({
                           <Image
                             layout="fill"
                             objectFit="cover"
-                            src={convertImgHttps(thumb)}
+                            src={convertImgHttps(thumb_banner != null ? thumb_banner : thumb )}
                             alt={slug}
                           />
                         </Box>

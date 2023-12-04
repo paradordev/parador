@@ -12,6 +12,7 @@ const nextConfig = {
       "dev.parador-hotels.com",
       "parador-hotels.com",
       "backend.parador-hotels.com",
+      "sback.parador-hotels.com",
     ],
   },
   experimental: {
