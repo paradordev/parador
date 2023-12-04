@@ -235,7 +235,13 @@ function FooterList({
       maxW={{ lg: `15%`, base: `100%` }}
       mb={{ base: 6, lg: 0 }}
     >
-      <Heading color="whiteAlpha.600" fontSize="md" mb={4} fontWeight={500} as="h4">
+      <Heading
+        color="whiteAlpha.600"
+        fontSize="md"
+        mb={4}
+        fontWeight={500}
+        as="h4"
+      >
         {title}
       </Heading>
       <UnorderedList
@@ -376,7 +382,7 @@ const listPage = {
     <NextLink key={2} passHref href={`/meeting-events`}>
       <Link _focus={{}}>Meeting & Events</Link>
     </NextLink>,
-    <NextLink key={4} passHref href={`/shop`}>
+    <NextLink key={4} passHref href={`https://www.shop.parador-hotels.com/`}>
       <Link _focus={{}}>Store</Link>
     </NextLink>,
     <NextLink key={5} passHref href={`/blog`}>
@@ -396,7 +402,7 @@ const listPage = {
     <NextLink key={2} passHref href={`/meeting-events`}>
       <Link _focus={{}}>Rapat & Acara</Link>
     </NextLink>,
-    <NextLink key={4} passHref href={`/shop`}>
+    <NextLink key={4} passHref href={`https://www.shop.parador-hotels.com/id/`}>
       <Link _focus={{}}>Toko</Link>
     </NextLink>,
     <NextLink key={5} passHref href={`/blog`}>
@@ -412,7 +418,12 @@ const listSitemap = {
     <NextLink key={0} passHref href={`/help-center`}>
       <Link _focus={{}}>Offers Help Center</Link>
     </NextLink>,
-    <NextLink key={1} passHref href={`/why-book-direct`}>
+    <NextLink
+      key={1}
+      passHref
+      href={`https://digicom.parador-hotels.com/why-book-direct`}
+      isExternal
+    >
       <Link _focus={{}}>Why Book Direct</Link>
     </NextLink>,
     <NextLink key={2} passHref href={`/privacy-policy`}>
@@ -426,7 +437,12 @@ const listSitemap = {
     <NextLink key={0} passHref href={`/help-center`}>
       <Link _focus={{}}>Pusat Bantuan</Link>
     </NextLink>,
-    <NextLink key={1} passHref href={`/why-book-direct`}>
+    <NextLink
+      key={1}
+      passHref
+      href={`https://digicom.parador-hotels.com/why-book-direct`}
+      isExternal
+    >
       <Link _focus={{}}>Kenapa Pesan Langsung</Link>
     </NextLink>,
     <NextLink key={2} passHref href={`/privacy-policy`}>

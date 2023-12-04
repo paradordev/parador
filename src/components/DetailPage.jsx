@@ -16,9 +16,10 @@ import {
 import { Markup } from "interweave";
 import { filter, random } from "lodash";
 import Image from "next/image";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useRef, useState } from "react";
-import { FaShare } from "react-icons/fa";
+import { FaRegFilePdf, FaShare } from "react-icons/fa";
 import {
   IoAddOutline,
   IoCalendarClearOutline,
@@ -70,6 +71,7 @@ export default function DetailPage({
   connectToSynxis,
   promoUrl = "#",
   backTo = "/special-offers",
+  brochure = null,
 }) {
   const router = useRouter();
 
@@ -292,6 +294,31 @@ export default function DetailPage({
                   {isSharePop && <SharePopup />}
                   <Box pb={6} />
                 </AccordionItem>
+
+                {brochure && brochure?.url && (
+                  <AccordionItem>
+                    <h2>
+                      <AccordionButton pl={[0, null, null, 4]}>
+                        <Flex flex="1" align="center" gap={2}>
+                          <FaRegFilePdf />
+                          <Text pl={0.5} fontWeight={600}>
+                            {router.locale == "id" ? "Unduh" : "Downloads"}
+                          </Text>
+                        </Flex>
+                      </AccordionButton>
+                    </h2>
+                    <AccordionPanel pb={6}>
+                      <Flex flexDir="column" gap={4} ml={`1.6rem`}>
+                        <Link
+                          href={`http://docs.google.com/viewerng/viewer?url=${brochure?.url}`}
+                          isExternal
+                        >
+                          {router.locale == "id" ? "Brosur" : "Brochure"}
+                        </Link>
+                      </Flex>
+                    </AccordionPanel>
+                  </AccordionItem>
+                )}
 
                 {newBenefits && newBenefits.length > 0 && (
                   <AccordionItem pt={0}>

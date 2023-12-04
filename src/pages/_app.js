@@ -27,7 +27,7 @@ function MyApp({ Component, pageProps }) {
         ReactPixel.init(process.env.NEXT_PUBLIC_FACEBOOK_PIXEL);
         ReactPixel.pageView();
 
-        router.events.on("routeChangeComplete", () => {
+        events.on("routeChangeComplete", () => {
           ReactPixel.pageView();
         });
       });
@@ -58,38 +58,40 @@ function MyApp({ Component, pageProps }) {
         })(window,document,'script','dataLayer','${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS_PROD}');
         `}
       </Script>
+      <Script id="rocketbots__widget" src="https://cdn.chatapi.net/webchat/widget/widget.js?cId=2fe8ab11e41d8c1dd3ab007f56a7024478dd839b783ef08182a63abd6d141c01"></Script>
 
       <NextNProgress
         color="rgba(150,150,150,0.4)"
         options={{ easing: "ease", showSpinner: true }}
       />
-      <ScrollToTop
-        showUnder={200}
-        duration={1250}
-        easing="easeInOutExpo"
-        style={{
-          position: "fixed",
-          bottom: isLarge ? 60 : 20,
-          right: isLarge ? 100 : 20,
-          cursor: "pointer",
-          transitionDuration: "1s",
-          transitionTimingFunction: "ease-out",
-          transitionDelay: "0s",
-          zIndex: 1999,
-        }}
+
+      <Box
+        position="fixed"
+        bottom={[24, 24, 50]}
+        right={safeMarginX}
+        zIndex={1999}
+        cursor="pointer"
+        transform="translate(75%, 75%)"
+        transition="all 1s ease-out"
       >
-        <Box
-          right={safeMarginX}
-          h={42}
-          w={42}
-          bg="white"
-          borderRadius="50%"
-          className="header-box-shadows"
-          p={1}
+        <ScrollToTop
+          showUnder={200}
+          duration={1250}
+          easing="easeInOutExpo"
+          style={{ position: "relative" }}
         >
-          <IoChevronUpOutline size="100%" />
-        </Box>
-      </ScrollToTop>
+          <Box
+            h={42}
+            w={42}
+            bg="white"
+            borderRadius="50%"
+            className="header-box-shadows"
+            p={1}
+          >
+            <IoChevronUpOutline size="100%" />
+          </Box>
+        </ScrollToTop>
+      </Box>
       <Component {...pageProps} />
     </ChakraProvider>
   );

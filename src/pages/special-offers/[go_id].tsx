@@ -58,6 +58,7 @@ export default function Hotel({
     meta_desc_id,
     meta_desc_en,
     meta_thumb,
+    brochures,
   } = offer;
 
   return (
@@ -123,6 +124,7 @@ export default function Hotel({
         arrive={arrive}
         depart={depart}
         hotelCode={toString(header.hotel_code)}
+        brochure={brochures}
       />
       <Flex px={safeMarginX}>
         <Divider

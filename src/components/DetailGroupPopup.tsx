@@ -161,11 +161,17 @@ export default function DetailGroupPopup({
                   {router.locale == "id" ? "Keuntungan" : "Benefits"}
                 </Text>
                 <UnorderedList display="flex" flexDir="column" gap={0}>
-                  {objParserWP(data[0].benefits, "benefit").map((v) => (
-                    <ListItem pl={2} ml={1} key={v}>
-                      {v}
-                    </ListItem>
-                  ))}
+                  {router.locale == "id"
+                    ? objParserWP(data[0].benefits_id, "benefit").map((v) => (
+                        <ListItem pl={2} ml={1} key={v}>
+                          {v}
+                        </ListItem>
+                      ))
+                    : objParserWP(data[0].benefits, "benefit").map((v) => (
+                        <ListItem pl={2} ml={1} key={v}>
+                          {v}
+                        </ListItem>
+                      ))}
                 </UnorderedList>
               </Box>
               <Flex align="center" gap={2}>

@@ -46,7 +46,7 @@ export default function Hotel({
   } = hotelHome;
 
   const eventItems = [
-    header.has_wedding && {
+    header.has_wedding == "true" && {
       title: locale == "id" ? "Pernikahan" : "Wedding",
       desctiption:
         locale == "id"
@@ -60,7 +60,7 @@ export default function Hotel({
       thumbnail: hotelHome.wedding_thumbnail,
     },
 
-    header.has_social_events && {
+    header.has_social_events == "true" && {
       title: locale == "id" ? "Acara sosial" : "Social Events",
       desctiption:
         locale == "id"
@@ -70,7 +70,7 @@ export default function Hotel({
       thumbnail: hotelHome.events_thumbnail,
     },
 
-    header.has_meeting_events && {
+    header.has_meeting_events == "true" && {
       title: locale == "id" ? "Ruang Meeting" : "Meeting Room",
       desctiption:
         locale == "id"
@@ -101,7 +101,9 @@ export default function Hotel({
         image={
           !isEmpty(hotelBrands.meta_thumb)
             ? hotelBrands.meta_thumb
-            : hero.slider[0].url
+            : hero
+            ? hero.slider[0].url
+            : ""
         }
       />
       <HeaderV3
@@ -190,52 +192,54 @@ export async function getStaticProps({ locale, params }: any) {
   temp = await data;
 
   if (locale == "id") {
-    let x = JSON.stringify(data);
+    let x = JSON.stringify(data ?? "");
     let y = x.replace(/_id/g, "");
     temp = JSON.parse(y);
   } else {
-    let x = JSON.stringify(data);
+    let x = JSON.stringify(data ?? "");
     let y = x.replace(/_en/g, "");
     temp = JSON.parse(y);
   }
 
   const {
-    _ID,
-    name,
-    location_short,
-    location_url,
-    hotel_location,
-    phone,
-    logo_dark,
-    logo_light,
-    color_primary,
-    color_secondary,
-    is_parador,
-    slug,
-    hotel_code,
-    home_headline,
-    home_subheadline,
-    hotel_sliders,
-    hotel_gallery,
-    location_short_en,
-    facilities,
-    brand,
-    has_dining,
-    has_wedding,
-    has_meeting_events,
-    has_social_events,
-    meeting_thumbnail,
-    events_thumbnail,
-    wedding_thumbnail,
-    location_long,
-    location_long_en,
-    email,
-  } = temp;
+    _ID = null,
+    name = null,
+    location_short = null,
+    location_url = null,
+    hotel_location = null,
+    phone = null,
+    logo_dark = null,
+    logo_light = null,
+    color_primary = null,
+    color_secondary = null,
+    is_parador = null,
+    slug = null,
+    hotel_code = null,
+    home_headline = null,
+    home_subheadline = null,
+    hotel_sliders = null,
+    hotel_gallery = null,
+    location_short_en = null,
+    facilities = null,
+    brand = null,
+    has_dining = null,
+    has_wedding = null,
+    has_meeting_events = null,
+    has_social_events = null,
+    meeting_thumbnail = null,
+    events_thumbnail = null,
+    wedding_thumbnail = null,
+    location_long = null,
+    location_long_en = null,
+    email = null,
+    instagram = null,
+    facebook = null,
+  } = temp || {};
 
   const header: IHeader = {
-    email: email,
-    instagram: temp.instagram,
-    facebook: temp.facebook,
+    email: email ?? "",
+    instagram: instagram ?? "",
+    facebook: facebook ?? "",
     location_long: location_long ? location_long : location_long_en,
     id: _ID,
     name,

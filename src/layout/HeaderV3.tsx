@@ -17,7 +17,8 @@ import {
   Slide,
   Spinner,
   Text,
-  useOutsideClick,
+  useMediaQuery,
+  useOutsideClick
 } from "@chakra-ui/react";
 import Image from "next/image";
 import { useRouter } from "next/router";
@@ -27,7 +28,7 @@ import {
   SetStateAction,
   useEffect,
   useRef,
-  useState,
+  useState
 } from "react";
 import { FaGripLines } from "react-icons/fa";
 import {
@@ -39,7 +40,7 @@ import {
   IoGlobeOutline,
   IoLocationOutline,
   IoPerson,
-  IoPersonOutline,
+  IoPersonOutline
 } from "react-icons/io5";
 import FormBookNowTop from "../components/FormBookNowTop";
 import InputSelect from "../components/Input/InputSelect";
@@ -48,7 +49,7 @@ import LinkTo from "../components/LinkTo";
 import { convertImgHttps } from "../utils/functions";
 import { useNextDining, usePopUpBackground } from "../utils/hooks";
 
-import { safeMarginX, useLargeQuery } from "../utils/mediaQuery";
+import { safeMarginX } from "../utils/mediaQuery";
 import { IHeader } from "../utils/types";
 
 export const NavContext = createContext<any>(null);
@@ -87,7 +88,11 @@ export default function HeaderV3({
     has_wedding,
   } = headerItem;
 
-  const { isLarge, is2XLarge } = useLargeQuery();
+  // const { isLarge, is2XLarge } = useLargeQuery();
+  const [is2XLarge] = useMediaQuery("(min-width:  1160px)", {
+    ssr: true,
+    fallback: false,
+  });
 
   const container = useRef(null);
   const headerContainer = useRef<any>(null);
@@ -302,7 +307,6 @@ export default function HeaderV3({
   if (isMobilePop) {
     return (
       <>
-        {/* {!offsetHeader && <Flex h="120px" bg={color_primary} />} */}
         <Slide direction="left" in={isMobilePop} style={{ zIndex: 9999 }}>
           <Flex
             h="100vh"
@@ -349,12 +353,12 @@ export default function HeaderV3({
               >
                 {is_parador && (
                   <AccordionItem _focus={{}} py={2}>
-                    <h2>
+                    <span>
                       <AccordionButton _focus={{}}>
                         <a>{locale === "id" ? `Hotel` : `Hotels`}</a>
                         <AccordionIcon />
                       </AccordionButton>
-                    </h2>
+                    </span>
                     <AccordionPanel pb={4}>
                       <Flex
                         flexWrap="wrap"
@@ -411,12 +415,12 @@ export default function HeaderV3({
 
                 {is_parador && (
                   <AccordionItem _focus={{}} py={2}>
-                    <h2>
+                    <span>
                       <AccordionButton _focus={{}}>
                         <a> {locale === "id" ? `Restoran` : `Dining`}</a>
                         <AccordionIcon />
                       </AccordionButton>
-                    </h2>
+                    </span>
                     <AccordionPanel pb={4}>
                       <Flex
                         flexWrap="wrap"
@@ -425,13 +429,6 @@ export default function HeaderV3({
                         flexDir="column"
                         color="whiteAlpha.700"
                       >
-                        {/* {diningMobileList.map(({ id, name }: any) => {
-                          return (
-                            <LinkTo key={id} to={`/dining/${id}`}>
-                              {name}
-                            </LinkTo>
-                          );
-                        })} */}
                         {diningMobileListV2.map(
                           ({ hotel, dining, slug }: any) => {
                             return (
@@ -534,13 +531,21 @@ export default function HeaderV3({
 
                 {is_parador && (
                   <AccordionItem _focus={{}} py={2}>
-                    <h2>
-                      <AccordionButton _focus={{}}>
-                        <a> {locale === "id" ? `Toko` : `Store`}</a>
-                        <AccordionIcon />
+                    <span>
+                      <AccordionButton
+                        _focus={{}}
+                        onClick={() =>
+                          push(
+                            locale == "id"
+                              ? "https://www.shop.parador-hotels.com/id/"
+                              : "https://www.shop.parador-hotels.com/"
+                          )
+                        }
+                      >
+                        <a>{locale == "id" ? "Belanja" : "Shop"}</a>
                       </AccordionButton>
-                    </h2>
-                    <AccordionPanel pb={4}>
+                    </span>
+                    {/* <AccordionPanel pb={4}>
                       <Flex
                         flexWrap="wrap"
                         gap={3}
@@ -549,7 +554,13 @@ export default function HeaderV3({
                         color="whiteAlpha.700"
                       >
                         <Box>
-                          <LinkTo to="/shop">
+                          <LinkTo
+                            to={
+                              locale == "id"
+                                ? "https://www.shop.parador-hotels.com/id/"
+                                : "https://www.shop.parador-hotels.com/"
+                            }
+                          >
                             {locale == "id" ? "Belanja" : "Shop"}
                           </LinkTo>
                         </Box>
@@ -559,7 +570,7 @@ export default function HeaderV3({
                           </LinkTo>
                         </Box>
                       </Flex>
-                    </AccordionPanel>
+                    </AccordionPanel> */}
                   </AccordionItem>
                 )}
 
@@ -1037,17 +1048,21 @@ export default function HeaderV3({
                             navPosition.includes("gift-cart")
                           }
                           activeColor={handleActiveColor}
-                          to={`/shop`}
+                          to={
+                            locale == "id"
+                              ? "https://www.shop.parador-hotels.com/id/"
+                              : "https://www.shop.parador-hotels.com/"
+                          }
                           className="link-with-icon"
-                          onClick={(e: Event) => {
-                            navPosition == "store"
-                              ? setNavPosition("")
-                              : setNavPosition("store");
-                            e.preventDefault();
-                          }}
+                          // onClick={(e: Event) => {
+                          //   navPosition == "store"
+                          //     ? setNavPosition("")
+                          //     : setNavPosition("store");
+                          //   e.preventDefault();
+                          // }}
                         >
-                          {locale === "id" ? `Toko` : `Store`}
-                          {navPosition == "store" ? (
+                          {locale === "id" ? `Belanja` : `Shop`}
+                          {/* {navPosition == "store" ? (
                             <IoChevronUp
                               color={handleActiveColor
                                 .toString()
@@ -1059,17 +1074,15 @@ export default function HeaderV3({
                                 .toString()
                                 .replace("#", "%23")}
                             />
-                          )}
+                          )} */}
                         </LinkTo>
-                        {navPosition == "store" && (
+                        {/* {navPosition == "store" && (
                           <Flex
                             flexDir="column"
                             position={"absolute"}
                             bottom={3}
                             gap={1.5}
                             opacity={0.7}
-                            // display={navPosition == "store" ? `flex` : `none`}
-                            // transition="all .1s ease"
                           >
                             <LinkTo
                               activeColor={
@@ -1077,7 +1090,11 @@ export default function HeaderV3({
                                   ? color_primary
                                   : `white`
                               }
-                              to="/shop"
+                              to={
+                                locale == "id"
+                                  ? "https://www.shop.parador-hotels.com/id/"
+                                  : "https://www.shop.parador-hotels.com/"
+                              }
                             >
                               {locale == "id" ? "Belanja" : "Shop"}
                             </LinkTo>
@@ -1088,7 +1105,7 @@ export default function HeaderV3({
                               {locale == "id" ? "Kartu Hadiah" : "Gift Card"}
                             </LinkTo>
                           </Flex>
-                        )}
+                        )} */}
                       </Flex>
                     )}
 
@@ -1133,53 +1150,6 @@ export default function HeaderV3({
                 </Flex>
               </>
             </Flex>
-
-            {/* {navPosition == "store" && (
-              <Flex
-                position="relative"
-                top={0}
-                h="80px"
-                transition="all ease .5"
-              >
-                <Flex
-                  position="absolute"
-                  // right="19.8%"
-                  left={storeText.current.offsetLeft}
-                  // right="23.5vw"
-                  top="50%"
-                  transform="translate(0%, -50%)"
-                  flexDir="column"
-                  opacity={0.6}
-                  color={offsetHeader || !isHomepage ? color_primary : `white`}
-                  mx={safeMarginX}
-                  gap={2}
-                  fontWeight={500}
-                >
-                  <LinkTo
-                    activeColor={
-                      offsetHeader || !isHomepage ? color_primary : `white`
-                    }
-                    to="/shop"
-                  >
-                    SHOP
-                  </LinkTo>
-                  <LinkTo
-                    activeColor={isHomepage ? "white" : color_primary}
-                    to="/gift-card"
-                  >
-                    GIFT CARD
-                  </LinkTo>
-                  <LinkTo
-                    activeColor={
-                      offsetHeader || !isHomepage ? color_primary : `white`
-                    }
-                    to="/shop/cart"
-                  >
-                    CART
-                  </LinkTo>
-                </Flex>
-              </Flex>
-            )} */}
           </Flex>
         ) : (
           <Flex
@@ -1218,40 +1188,6 @@ export default function HeaderV3({
           </Flex>
         )}
       </Flex>
-
-      {/* {navPosition == "store" && (
-        <Flex
-          position="relative"
-          top={0}
-          bg="white"
-          h="80px"
-          className="header-box-shadows"
-          transition="all ease .5"
-        >
-          <Flex
-            position="absolute"
-            // right="21%"
-            right="23.5vw"
-            top="50%"
-            transform="translate(0%, -50%)"
-            flexDir="column"
-            color="blackAlpha.700"
-            mx={safeMarginX}
-            gap={2}
-            fontWeight={500}
-          >
-            <LinkTo activeColor="black" to="/shop">
-              SHOP
-            </LinkTo>
-            <LinkTo activeColor="black" to="/gift-card">
-              GIFT CARD
-            </LinkTo> 
-            <LinkTo activeColor="black" to="/shop/cart">
-              CART
-            </LinkTo>
-          </Flex>
-        </Flex>
-      )} */}
     </Box>
   );
 }
@@ -1419,22 +1355,26 @@ function HeaderPop({
 
               <LinkTo
                 activeColor={`white`}
-                to={`/shop`}
+                to={
+                  locale == "id"
+                    ? "https://www.shop.parador-hotels.com/id/"
+                    : "https://www.shop.parador-hotels.com/"
+                }
                 className="link-with-icon"
-                onClick={(e: Event) => {
-                  setNavPop(false);
-                  navPosition == "store"
-                    ? setNavPosition("")
-                    : setNavPosition("store");
-                  e.preventDefault();
-                }}
+                // onClick={(e: Event) => {
+                //   setNavPop(false);
+                //   navPosition == "store"
+                //     ? setNavPosition("")
+                //     : setNavPosition("store");
+                //   e.preventDefault();
+                // }}
               >
-                {locale === "id" ? `Toko` : `Store`}
-                {navPosition == "store" ? (
+                {locale === "id" ? `Belanja` : `Shop`}
+                {/* {navPosition == "store" ? (
                   <IoChevronUp color={`white`} />
                 ) : (
                   <IoChevronDown color={`white`} />
-                )}
+                )} */}
               </LinkTo>
 
               <LinkTo activeColor={`white`} to={`/contact`}>
@@ -1497,7 +1437,7 @@ function HeaderPop({
         <Box h={10} />
       )}
       <Flex px={safeMarginX} color="white" gap={10}>
-        <Box w="15%">
+        <Box w="20%">
           <Heading
             as="h1"
             fontSize="xl"
@@ -1505,6 +1445,8 @@ function HeaderPop({
             fontWeight={400}
             mb={4}
             mr={4}
+            wordBreak="break-word"
+            whiteSpace="pre-wrap"
           >
             {navPosition === "hotels" &&
               (locale == "id"
@@ -1569,13 +1511,6 @@ function HeaderPop({
                 linkTo={hotelBrands[4].linkTo}
               />
             </Flex>
-            {/* <Flex direction="column" gap={5}>
-              <HotelList
-                name={hotelBrands[5].name}
-                list={hotelBrands[5].list}
-                linkTo={hotelBrands[5].linkTo}
-              />
-            </Flex> */}
           </Flex>
         )}
         {navPosition === "hotels" &&
@@ -1665,18 +1600,6 @@ function HeaderPop({
                   }
                 />
               </Flex>
-              {/* <Flex direction="column" gap={5}>
-                <HotelList
-                  name="SemarANG"
-                  nameLink={`/filter?type=hotel&location=semarang`}
-                  list={["HA-KA HOTEL"]}
-                  sublist={["SEMARANG"]}
-                  linkTo={[hotelLoc[10]]}
-                  setNavPop={(isNavPop: SetStateAction<any>) =>
-                    setNavPop(isNavPop)
-                  }
-                />
-              </Flex> */}
             </Flex>
           ))}
         {navPosition === "dining" &&
@@ -1720,14 +1643,6 @@ function HeaderPop({
                   sublist={listDining[3].subList}
                   linkTo={listDining[3].linkTo}
                 />
-                {/* <Divider /> */}
-                {/* <HotelList
-                  name={listDining[4].name}
-                  nameLink={`/filter?type=dining&location=bali`}
-                  list={listDining[4].list}
-                  sublist={listDining[4].subList}
-                  linkTo={listDining[4].linkTo}
-                /> */}
               </Flex>
             </Flex>
           ))}

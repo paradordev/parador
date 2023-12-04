@@ -102,15 +102,42 @@ export default function SectionContact({
               await postSendMail({
                 mailkey: "halo",
                 emails: emailParticipants,
-                subject: "A Contact Request",
-                title: "A Contact Request",
+                subject: "A Contact Request from Hotel Website",
+                title: "A Contact Request from Hotel Website",
                 hotel: hotel ?? "Parador",
                 name: "Admins",
-                body: `A Message from Customer! Kindly check Admin Panel to process it.
-                
-                
-                
-                ${message}`,
+                body: `<div>
+                  <h3>
+                  A Message from Customer!
+                  </h3>
+                  <table class="detail-table">
+                    <tr>
+                      <td>Hotel</td>
+                      <td> : </td>
+                      <td>${hotel ?? "Parador"}</td>
+                    </tr>
+                    <tr>
+                      <td>Name</td>
+                      <td> : </td>
+                      <td>${name}</td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td> : </td>
+                      <td>${email}</td>
+                    </tr>
+                    <tr>
+                      <td>Phone</td>
+                      <td> : </td>
+                      <td>${phone}</td>
+                    </tr>
+                    <tr>
+                      <td>Message</td>
+                      <td> : </td>
+                      <td>${message}</td>
+                    </tr>
+                  </table>
+                </div>`,
                 type: "Contact Us",
               }).then((res) => {
                 res.status == 200 && formik.setStatus("success");

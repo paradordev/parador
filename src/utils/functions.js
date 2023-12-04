@@ -35,7 +35,7 @@ export const fetcherGraphQL = (query) => request(env.gqlUrl, query);
 
 export const fetcher = axios.create({
   baseURL: env.apiUrl,
-  timeout: 15000,
+  timeout: 50000,
   headers: {
     Authorization: env.apiAuth,
   },
@@ -43,12 +43,12 @@ export const fetcher = axios.create({
 
 export const fetcherNext = axios.create({
   baseURL: env.nextUrl,
-  timeout: 15000,
+  timeout: 50000,
 });
 
 export const fetcherWPImage = axios.create({
   baseURL: process.env.NEXT_PUBLIC_URL_WP_MEDIA,
-  timeout: 15000,
+  timeout: 50000,
 });
 
 export const objectToParams = (obj) => new URLSearchParams(obj).toString();

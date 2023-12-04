@@ -118,6 +118,8 @@ export default function Reservation({
                 databaseId
                 name
                 sku
+                price
+                regularPrice
               }
             }
           }
@@ -139,9 +141,12 @@ export default function Reservation({
   const [message, setMessage] = useState<any>();
 
   useEffect(() => {
-    products &&
-      products.products.nodes.length > 0 &&
-      setPrices(products.products.nodes[0].price.replace(/ /g, "").split(","));
+    if (products && products.products.nodes.length > 0) {
+      const tempPrices = products.products.nodes[0].variations.nodes.map(
+        ({ price }: any) => price.replace(/\./g, "").replace("Rp", "")
+      );
+      setPrices(tempPrices);
+    }
   }, [products]);
 
   useEffect(() => {

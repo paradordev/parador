@@ -43,7 +43,7 @@ export default function Footer({ loc, address, email, phone }) {
           gap={2}
           justify={{ base: `space-between`, lg: `initial` }}
         >
-          <Box mr={6} maxW={[60, 120]}>
+          <Box mr={6} maxW={[24, 120]}>
             <Image
               objectFit="contain"
               src="https://backend.parador-hotels.com/wp-content/uploads/2023/05/PHR-Logo-Parador-White.webp"
@@ -303,7 +303,7 @@ const listOurGrup = {
     <NextLink href="/" passHref key={0}>
       <Link _focus={{}}>Homepage</Link>
     </NextLink>,
-    <NextLink key={1} href={`/`} passHref>
+    <NextLink key={1} href={`/about`} passHref>
       <Link _focus={{}}>About Us</Link>
     </NextLink>,
     <NextLink key={2} href={`/`} passHref>
@@ -371,7 +371,7 @@ const listPage = {
     <NextLink key={2} passHref href={`/meeting-events`}>
       <Link _focus={{}}>Meeting & Events</Link>
     </NextLink>,
-    <NextLink key={4} passHref href={`/shop`}>
+    <NextLink key={4} passHref href={`https://www.shop.parador-hotels.com/`}>
       <Link _focus={{}}>Store</Link>
     </NextLink>,
     <NextLink key={5} passHref href={`/blog`}>
@@ -391,7 +391,7 @@ const listPage = {
     <NextLink key={2} passHref href={`/meeting-events`}>
       <Link _focus={{}}>Rapat & Acara</Link>
     </NextLink>,
-    <NextLink key={4} passHref href={`/shop`}>
+    <NextLink key={4} passHref href={`https://www.shop.parador-hotels.com/id/`}>
       <Link _focus={{}}>Toko</Link>
     </NextLink>,
     <NextLink key={5} passHref href={`/blog`}>
@@ -408,13 +408,18 @@ const listSitemap = {
     <NextLink key={0} passHref href={`/help-center`}>
       <Link _focus={{}}>Offers Help Center</Link>
     </NextLink>,
-    <NextLink key={1} passHref href={`/why-book-direct`}>
+    <NextLink
+      key={1}
+      passHref
+      href={`https://digicom.parador-hotels.com/why-book-direct`}
+      isExternal
+    >
       <Link _focus={{}}>Why Book Direct</Link>
     </NextLink>,
     <NextLink key={2} passHref href={`/privacy-policy`}>
       <Link _focus={{}}>Privacy & Policy</Link>
     </NextLink>,
-    <NextLink key={3} passHref href={`career/`}>
+    <NextLink key={3} passHref href={`/career`}>
       <Link _focus={{}}>Career</Link>
     </NextLink>,
   ],
@@ -422,13 +427,18 @@ const listSitemap = {
     <NextLink key={0} passHref href={`/help-center`}>
       <Link _focus={{}}>Pusat Bantuan</Link>
     </NextLink>,
-    <NextLink key={1} passHref href={`/why-book-direct`}>
+    <NextLink
+      key={1}
+      passHref
+      href={`https://digicom.parador-hotels.com/why-book-direct`}
+      isExternal
+    >
       <Link _focus={{}}>Kenapa Pesan Langsung</Link>
     </NextLink>,
     <NextLink key={2} passHref href={`/privacy-policy`}>
       <Link _focus={{}}>Privasi & Kebijakan</Link>
     </NextLink>,
-    <NextLink key={3} passHref href={`career/`}>
+    <NextLink key={3} passHref href={`/career`}>
       <Link _focus={{}}>Karir</Link>
     </NextLink>,
   ],

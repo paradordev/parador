@@ -195,7 +195,58 @@ export default function FormMeeting({
                 title: `Your ${type} Enquiry Request`,
                 hotel: hotel,
                 name: "Admins",
-                body: `A ${type} Enquiry Request from Customer! Kindly check Admin Panel to process it.`,
+                body: `<div>
+                <h3>
+                  A ${type} Enquiry Request from a Customer!
+                </h3>
+                <table class="detail-table">
+                  <tr>
+                    <td>Hotel</td>
+                    <td> : </td>
+                    <td>${hotel}</td>
+                  </tr>
+                  <tr>
+                    <td>Name</td>
+                    <td> : </td>
+                    <td>${name}</td>
+                  </tr>
+                  <tr>
+                    <td>Email</td>
+                    <td> : </td>
+                    <td>${email}</td>
+                  </tr>
+                  <tr>
+                    <td>Phone</td>
+                    <td> : </td>
+                    <td>${phone}</td>
+                  </tr>
+                  <tr>
+                    <td>Start Date</td>
+                    <td> : </td>
+                    <td>${date_start}</td>
+                  </tr>
+                  <tr>
+                    <td>End Date</td>
+                    <td> : </td>
+                    <td>${date_end}</td>
+                  </tr>
+                  <tr>
+                    <td>Pax</td>
+                    <td> : </td>
+                    <td>${total_pax}</td>
+                  </tr>
+                  <tr>
+                    <td>Budget</td>
+                    <td> : </td>
+                    <td>${range_budget}</td>
+                  </tr>
+                  <tr>
+                    <td>Special Request</td>
+                    <td> : </td>
+                    <td>${special_request ?? '-'}</td>
+                  </tr>
+                </table>
+              </div>`,
                 type: type,
               }).then((res) => {
                 res.status == 200 && formik.setStatus("success");
@@ -240,7 +291,58 @@ export default function FormMeeting({
                 title: `Your ${type} Enquiry Request`,
                 hotel: hotel,
                 name: "Admins",
-                body: `A ${type} Enquiry Request from Customer! Kindly check Admin Panel to process it.`,
+                body: `<div>
+                  <h3>
+                    A Wedding Enquiry Request from a Customer!
+                  </h3>
+                  <table class="detail-table">
+                    <tr>
+                      <td>Hotel</td>
+                      <td> : </td>
+                      <td>${hotel}</td>
+                    </tr>
+                    <tr>
+                      <td>Name</td>
+                      <td> : </td>
+                      <td>${name}</td>
+                    </tr>
+                    <tr>
+                      <td>Email</td>
+                      <td> : </td>
+                      <td>${email}</td>
+                    </tr>
+                    <tr>
+                      <td>Phone</td>
+                      <td> : </td>
+                      <td>${phone}</td>
+                    </tr>
+                    <tr>
+                      <td>Start Date</td>
+                      <td> : </td>
+                      <td>${date_start}</td>
+                    </tr>
+                    <tr>
+                      <td>End Date</td>
+                      <td> : </td>
+                      <td>${date_end}</td>
+                    </tr>
+                    <tr>
+                      <td>Pax</td>
+                      <td> : </td>
+                      <td>${total_pax}</td>
+                    </tr>
+                    <tr>
+                      <td>Budget</td>
+                      <td> : </td>
+                      <td>${range_budget}</td>
+                    </tr>
+                    <tr>
+                      <td>Special Request</td>
+                      <td> : </td>
+                      <td>${special_request ?? '-'}</td>
+                    </tr>
+                  </table>
+                </div>`,
                 type: type,
               }).then((res) => {
                 res.status == 200 && formik.setStatus("success");

@@ -79,12 +79,15 @@ export default function handler(req: any, res: any) {
         .then(async (response) => {
           const { id, total, order_key } = response.data;
           const env = process.env.NODE_ENV;
+          const msg = isEmpty(params.message)
+            ? ``
+            : JSON.stringify(params?.message);
 
           const note = {
-            note: isEmpty(params.message) ? `` : toString(params.message),
+            note: msg,
           };
 
-          params.message &&
+          msg &&
             (await WooCommerce.post(`orders/${id}/notes`, note)
               .then((response) => {})
               .catch((error) => {
